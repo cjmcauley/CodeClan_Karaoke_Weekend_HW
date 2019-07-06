@@ -9,12 +9,12 @@ class TestSongs < MiniTest::Test
     @song1 = Songs.new('Proud Mary', 'Tina Turner')
   end
 
-def test_song_name
-  assert_equal('Proud Mary', @song1.title)
-end
+  def test_song_name
+    assert_equal('Proud Mary', @song1.title)
+  end
 
-def test_song_
-  assert_equal('Tina Turner', @song1.artist)
-end
+  def test_song_
+    assert_equal('Tina Turner', @song1.artist)
+  end
 
 end
