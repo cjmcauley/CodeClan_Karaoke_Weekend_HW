@@ -24,7 +24,9 @@ class Rooms
   end
 
   def add_song_to_room(song)
+    song = {:title => song.title, :artist => song.artist}
     @songs << song
+    return songs.length
   end
 
   def remove_guest_from_room(guest)
@@ -41,11 +43,10 @@ class Rooms
   end
 
   def favourite_song(guest)
-    all_songs = @songs
-    if all_songs.include?(guest.fav_song)
-      return "Whoo"
-  end
-  return guest.fav_song
+    if @songs.any? { |songs| songs[:title] == guest.fav_song }
+      return 'Whoo'
+    end
+    return
   end
 
 end

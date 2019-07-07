@@ -31,5 +31,4 @@ class TestGuests < MiniTest::Test
     assert_equal('Proud Mary', @guest1.fav_song)
   end
 
-
 end

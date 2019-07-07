@@ -22,6 +22,8 @@ class TestRooms < MiniTest::Test
     @song2 = Songs.new('Stereo', 'Pavement')
     @song3 = Songs.new('Crabs in a Bucket', 'Vince Staples')
 
+    @songs = [@song1, @song2, @song3]
+
   end
 
   def test_room_name
@@ -53,14 +55,14 @@ class TestRooms < MiniTest::Test
   end
 
   def test_add_song_to_room__single
-    assert_equal([@song1], @room1.add_song_to_room(@song1))
+    assert_equal(1, @room1.add_song_to_room(@song1))
   end
 
   def test_add_song_to_room__multiple
     @room1.add_song_to_room(@song1)
     @room1.add_song_to_room(@song2)
     @room1.add_song_to_room(@song3)
-    assert_equal([@song1, @song2, @song3], @room1.songs)
+    assert_equal(3, @room1.songs.length)
   end
 
   def test_add_and_remove_guests
@@ -109,9 +111,14 @@ class TestRooms < MiniTest::Test
     assert_equal(30, @guest4.wallet)
   end
 
-  def test_guest_reaction_to_favourite_song
+  def test_guest_reaction__favourite_song
     @room1.add_song_to_room(@song1)
     assert_equal('Whoo', @room1.favourite_song(@guest1))
+  end
+
+  def test_guest_reaction__no_favourite_song
+    @room1.add_song_to_room(@song2)
+    assert_nil(nil, @room1.favourite_song(@guest1))
   end
 
 end
